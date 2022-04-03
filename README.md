@@ -21,7 +21,7 @@ Not very well tested, only ran on two pcs. Hopefully it works 🙂
 
 # I Published it as a single file, but its WAY too big.
 (Visual Studio Only)
-Right click the .csproj file, click publish, click folder, click next, click folder, then next, specify your path where you the file, click finish. Then you should see some light blue text saying "Show all settings" click it, in Deployment mode, select Self contained, and in target runtime select whatever bit your targeting, then click on File publish options and select Produce single file, Enable Ready To Run Compilation and trim unused code. When published this should decrease the size drastically (75%). 👍
+Right click the .csproj file, click publish, click folder, click next, click folder, then next, specify your path where you the file, click finish. Then you should see some light blue text saying "Show all settings" click it, in Deployment mode, select Self contained, and in target runtime select whatever bit you're targeting, then click on File publish options and select Produce single file, Enable Ready To Run Compilation and trim unused code. When published this should decrease the size drastically (75%). 👍
 
 
 
