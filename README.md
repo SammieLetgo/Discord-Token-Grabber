@@ -1,5 +1,5 @@
 # Discord-Token-Grabber
-Sends embed to discord webhook containing Discord token, PC Name, Username, and  Internal ip
+Sends embed to discord webhook containing Discord token, PC Name, Username, Local ip and public ip.
 
 
 # How to use?
