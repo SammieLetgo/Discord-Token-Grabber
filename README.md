@@ -17,7 +17,7 @@ May fail, only tested on windows. has dependencies, but if you publish as onefil
 
 # About
 Spent 3/4 of time fixing a Bad Webrequest 400 issue, couldn't filter all possible tokens, feel really stupid now because i just used a foreach loop and it worked 💀
-Not very well tested, only ran on my two pcs. Hopefully it works 🙂
+Not very well tested, only ran on two pcs. Hopefully it works 🙂
 
 
 
