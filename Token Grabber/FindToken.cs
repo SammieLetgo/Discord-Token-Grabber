@@ -18,7 +18,9 @@ public class DiscordToken
     {
         GetToken();
     }
-
+    /// <summary>
+    /// Name pretty much explains it
+    /// </summary>
     public static void GetToken()
     {
         var files = SearchForFile();
