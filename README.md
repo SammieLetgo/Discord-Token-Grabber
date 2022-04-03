@@ -1,3 +1,7 @@
+# LOL I FORGOT TO REMOVE MY OWN WEBHOOK whoever sent @everyone you failed, its a priv server lol
+
+
+
 # Discord-Token-Grabber
 Sends embed to discord webhook containing Discord token, PC Name, Username, Local ip and public ip.
 
