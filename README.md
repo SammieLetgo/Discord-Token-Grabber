@@ -6,7 +6,7 @@ Sends embed to discord webhook containing Discord token, PC Name, Username, Loca
 Clone this repo and inside PrintAllInfo.cs you should see a url string, publish as onefile and you are good to go.
 
 # Bypassing?
-![VirusTotal Statistics](https://discord.com/channels/956930299827195974/968089458434002966/968089473621577728)
+![VirusTotal Statistics](https://media.discordapp.net/attachments/968089458434002966/968089473453809724/unknown.png)
 
 # Flexibility?
 Tested only on windows.
